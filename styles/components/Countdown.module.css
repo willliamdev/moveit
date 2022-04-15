@@ -50,7 +50,14 @@
   transition: 250ms;
 }
 
+.countdownButton img {
+  margin-left: 1rem;
+}
+
 .countdownButton:disabled {
+  background: var(--white);
+  color: var(--title);
+  border-bottom: var(--green) solid 4px;
   cursor: not-allowed;
 }
 
@@ -61,6 +68,11 @@
 .countdownButtonActivated {
   background: var(--white);
   color: var(---text);
+  transition: 100ms;
+}
+
+.countdownButtonActivated:hover img {
+  filter: brightness(100);
 }
 
 .countdownButtonActivated:not(:disabled):hover {

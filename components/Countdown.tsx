@@ -5,7 +5,7 @@ import styles from '../styles/components/Countdown.module.css'
 let countdownTimeout: NodeJS.Timeout
 
 export function Countdown() {
-  const [time, setTime] = useState(25)
+  const [time, setTime] = useState(10)
   const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
 
@@ -56,6 +56,7 @@ export function Countdown() {
           className={styles.countdownButton}
         >
           Ciclo encerrado
+          <img src="icons/check_circle.svg" alt="circulo verde com sinal de cofirmação em branco ao centro" />
         </button>
       ) : (
         <>
@@ -66,6 +67,7 @@ export function Countdown() {
               onClick={startCountdown}
             >
               Iniciar um ciclo
+              <img src="icons/start.svg" alt="apenas um 'x' em cor cinza" />
             </button>
 
           ) : (
@@ -76,6 +78,7 @@ export function Countdown() {
               onClick={resetCountdown}
             >
               Abandonar ciclo
+              <img src="icons/cancel.svg" alt="apenas um 'x' em cor cinza" />
             </button>
           )}
         </>
