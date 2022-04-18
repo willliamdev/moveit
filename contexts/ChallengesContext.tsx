@@ -9,11 +9,13 @@ interface Challenge {
 
 interface ChallengesContextData {
   level: number;
+  experienceToNextLevel: number;
   currentExperience: number;
   challengesCompleted: number;
   activeChallenge: Challenge | null;
   levelUp: () => void;
   startNewChallenge: () => void;
+  resetChallenge: () => void;
 }
 
 interface ChallengesProviderProps {
@@ -29,6 +31,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
   // bug to fix: initialize as null cause errror with type
   const [activeChallenge, setActiveChallenge] = useState(null)
 
+  const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
   function levelUp() {
     setLevel(level + 1)
@@ -49,11 +52,13 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
       value={
         {
           level,
+          experienceToNextLevel,
           currentExperience,
           challengesCompleted,
           activeChallenge,
           levelUp,
-          startNewChallenge
+          startNewChallenge,
+          resetChallenge
         }
       }
     >
