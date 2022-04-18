@@ -1,17 +1,26 @@
+import { useContext } from 'react'
+import { ChallengesContext } from '../contexts/ChallengesContext'
 import styles from '../styles/components/ChallengeBox.module.css'
 
 export function ChallengeBox() {
-  const hasActiveChallenge = true
+  const { activeChallenge } = useContext(ChallengesContext)
   return (
     <div className={styles.challengeBoxContainer}>
       {
-        hasActiveChallenge ? (
+        activeChallenge ? (
           <div className={styles.challengeActive}>
-            <header>Ganhe 400xp</header>
+            <header>Ganhe {activeChallenge.amount}xp</header>
             <main>
-              <img src="icons/body.svg" alt="ilustração de uma mão segurando um altere com anilhas menores na cor verde e as maiores na cor roxa" />
+              <img
+                src={`icons/${activeChallenge.type}.svg`}
+                alt={activeChallenge.type === 'body' ?
+                  "ilustração de uma mão segurando um altere com anilhas menores na cor verde e as maiores na cor roxa"
+                  : 'ilustração de um olho com íris azul e pulpila preta'
+                }
+              />
+
               <strong>Novo desafio</strong>
-              <p>Com as pernas juntas e sem dobrar os joelhos, tente ecostar as mãos nos pés</p>
+              <p>{activeChallenge.description}</p>
             </main>
             <footer>
               <button
