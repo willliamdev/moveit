@@ -25,6 +25,7 @@ export function ChallengeBox() {
             <footer>
               <button
                 type='button'
+                onClick={failed}
                 className={styles.challengeFailedButton}
               >
                 Falhei
