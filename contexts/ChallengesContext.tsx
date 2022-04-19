@@ -27,7 +27,7 @@ interface ChallengesProviderProps {
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({ children }: ChallengesProviderProps) {
-  const [level, setLevel] = useState(0)
+  const [level, setLevel] = useState(1)
   const [currentExperience, setCurrentExperience] = useState(0)
   const [challengesCompleted, setChallengesCompleted] = useState(0)
 
@@ -58,7 +58,9 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
 
     let finalExperience = currentExperience + amount
 
-    if (finalExperience >= experienceToNextLevel) {
+
+
+    if (finalExperience > experienceToNextLevel) {
       levelUp()
       finalExperience = finalExperience - experienceToNextLevel
       console.log(finalExperience)
