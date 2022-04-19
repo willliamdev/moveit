@@ -38,6 +38,7 @@ export function CountdownProvider({ children }: CountdownProviderData) {
     clearTimeout(countdownTimeout)
     setIsActive(false)
     setTime(25)
+    setHasFinished(false)
   }
 
   useEffect(() => {
