@@ -6,6 +6,12 @@ import styles from '../styles/components/ChallengeBox.module.css'
 export function ChallengeBox() {
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext)
   const { resetCountdown } = useContext(CountdownContext)
+
+  function handleChallengeSucceeded() {
+    completeChallenge()
+    resetCountdown()
+  }
+
   function handleChallengeFailed() {
     resetChallenge()
     resetCountdown()
@@ -39,7 +45,7 @@ export function ChallengeBox() {
               </button>
               <button
                 type='button'
-                onClick={completeChallenge}
+                onClick={handleChallengeSucceeded}
                 className={styles.challegeSucceedButton}
               >
                 Completei
