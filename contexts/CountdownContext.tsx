@@ -19,7 +19,6 @@ interface CountdownProviderData {
 }
 
 export const CountdownContext = createContext({} as CountdownContextData)
-console.log(CountdownContext)
 
 export function CountdownProvider({ children }: CountdownProviderData) {
   const { startNewChallenge } = useContext(ChallengesContext)
