@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 import challenges from '../challenges.json'
-
 
 interface Challenge {
   type: "body" | "eye";
@@ -44,11 +44,20 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
 
   }, [])
 
+  useEffect(() => {
+    Cookies.set('level', String(level))
+    Cookies.set('currentExperience', String(currentExperience))
+    Cookies.set('challengesCompleted', String(challengesCompleted))
+
+  }, [level, currentExperience, challengesCompleted])
+
   function startNewChallenge() {
     const randomChallengeIndex = Math.floor(Math.random() * challenges.length)
     const challenge = challenges[randomChallengeIndex]
 
     setActiveChallenge(challenge)
+
+    new Audio('/notification.mp3').play()
 
     if (Notification.permission === 'granted') {
       new Notification(
